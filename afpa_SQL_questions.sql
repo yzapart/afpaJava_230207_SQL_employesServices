@@ -29,7 +29,7 @@ select nom, prenom, embauche from emp where embauche < ( select min(embauche) fr
 
 select nom,prenom,sal from emp where sal > (select min(sal) from emp where noserv=3) order by sal asc;
 
-/* questions 61 trop d'imbrications (3 IN) */
+/* question 61 trop d'imbrications (3 IN) */
 select nom,noserv,emploi,sal from emp where noserv in (select noserv from serv where ville in (select ville from serv where noserv in (select noserv from emp where nom='HAVET')));
 /* Bonne  manière : */
 select * from emp,serv where emp.noserv=serv.noserv and ville = (select ville from serv, emp where emp.noserv=serv.noserv and emp.nom='HAVET');
