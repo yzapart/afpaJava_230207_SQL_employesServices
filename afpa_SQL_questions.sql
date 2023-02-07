@@ -3,65 +3,7 @@
 \dt : lister les tables de la bdd
 \d nomTable: affichr la structure de nomTable
 ------------
- create database exo1;
-\c exo1
-
-
-
-
-banque =# create database bd1
-banque =# \c bd1
-bd1=# create table Commune(id_commune serial primary key, nom varcharr(50));
-bd1=# insert into Commune values ('Leforest');
-bd1=# select * from commune
-
-
-create table Agence(
-					id_agence serial primary key, 
-					nom varchar(50), 
-					directeur varchar(50), 
-					id_commune int references commune(id_commune)
-					);
-					
-insert into Agence(nom, directeur, id_commune) values ('aaa','dirrr', 2);
-
-
-create table Comptable(
-						id_comptable serial primary key, 
-						nom_comptable varchar(50), 
-						date_naissance date, 
-						no_tel varchar(15), 
-						id_agence int references Agence(id_agence)
-						);
-						
-
-create table Exploitation(
-							id_exploitation serial primary key, 
-							nom_exploitation varchar(50), 
-							sau int, 
-							id_commune int references commune(id_commune), 
-							id_comptable int references comptable(id_comptable)
-						);
-						
-insert into exploitation(
-							nom_exploitation, 
-							sau, 
-							id_commune, 
-							id_comptable
-						) 
-						values (
-							'exploit_aaa', 
-							1523, 
-							1, 
-							1
-						);
-
-alter table employe 
-rename column commision_employe to commission_employe;
-	
-alter table employe
-alter column commission_employe type DECIMAL;		
-
+ 
 
 select e.nom, e.embauche, s.nom, s.embauche from emp as e, emp as s where e.embauche < s.embauche and e.sup = s.noemp;
 select emp.nom, serv.service from emp,serv where emp.noserv = serv.noserv;
